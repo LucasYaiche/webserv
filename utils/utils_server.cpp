@@ -2,19 +2,19 @@
 #include "../parsing/requete.hpp"
 #include "../parsing/webserv.hpp"
 
-void	Server::addtoqueue(int socket, fd_set *set, fd_set *read, fd_set *write)
-{
-	FD_SET(socket, set);
-    if(socket > max_fd)
-        max_fd = socket;
-    int r = 0;
-	if((r = select(max_fd + 1, read, write, 0, 0)) < 0)
-        exit(-1);
-    else if (r == 0)
-        std::cout << "Select time out" << std::endl;
-    writeSet = *write;
-    readSet = *read;
-}
+// void	Server::addtoqueue(int socket, fd_set *set, fd_set *read, fd_set *write)
+// {
+// 	FD_SET(socket, set);
+//     if(socket > max_fd)
+//         max_fd = socket;
+//     int r = 0;
+// 	if((r = select(max_fd + 1, read, write, 0, 0)) < 0)
+//         exit(-1);
+//     else if (r == 0)
+//         std::cout << "Select time out" << std::endl;
+//     writeSet = *write;
+//     readSet = *read;
+// }
 
 void    Server::initServer()
 {
@@ -209,7 +209,7 @@ void Server::showPage(Client client, std::string dir, int code)
         }
 
         // ADD to read queue =================================
-		addtoqueue(fd_r, &readSet, &readSet, &writeSet);
+		//addtoqueue(fd_r, &readSet, &readSet, &writeSet);
 
         // ==========================
 
@@ -234,7 +234,7 @@ void Server::showPage(Client client, std::string dir, int code)
                 }
 
                 // ADD to read queue =================================
-				addtoqueue(fd_r, &readSet, &readSet, &writeSet);
+				//addtoqueue(fd_r, &readSet, &readSet, &writeSet);
 				// ==========================
                 
 
@@ -294,7 +294,7 @@ bool Server::writeWithPoll(std::string url, Client client, std::string str)
     }
 
     // ADD to write queue =================================
-	addtoqueue(fd, &writeSet, &readSet, &writeSet);
+	//addtoqueue(fd, &writeSet, &readSet, &writeSet);
 	// =======================
 
     r = write(fd, str.c_str(), str.size());
@@ -320,7 +320,7 @@ bool Server::writeWithPoll(std::string url, Client client, Requete req)
     }
 
     // ADD to write queue =================================
-	addtoqueue(fd, &writeSet, &readSet, &writeSet);
+	//addtoqueue(fd, &writeSet, &readSet, &writeSet);
 	// =======================
 
     std::cout << colors::green << req.getFullBody() << std::endl;
