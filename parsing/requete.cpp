@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Requete.cpp                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tmartial <tmartial@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 16:18:30 by tmartial          #+#    #+#             */
-/*   Updated: 2022/08/30 16:55:53 by tmartial         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "requete.hpp"
 
 Requete::Requete(char *requete)
@@ -164,7 +152,7 @@ void Requete::make_GET(std::stringstream& ss)
 	
 }
 
-/* Makes query for lxu-wu */
+
 void Requete::make_query()
 {
 	size_t pos = _url.find("?");
