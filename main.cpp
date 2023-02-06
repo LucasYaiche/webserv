@@ -33,6 +33,18 @@ int main(int ac, char **av, char **envp)
 	try
 	{
 		parsing(ac, av, data);
+        for (size_t i = 0; i < data.getServers().size(); i++)
+        {
+            for (size_t j = 0; j < data.getServers().size(); j++)
+            {
+                if ( i != j)
+                    if (data.getServers()[i]->getListen() == data.getServers()[j]->getListen())
+                    {
+                        //implementer la meme sortie d erreur que tim
+                        std::cout << "Cannot use more than one time the same port"
+                    }
+            }
+        }
 	}
 	catch(const std::exception& e)
 	{
